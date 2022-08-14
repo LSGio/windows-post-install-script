@@ -3,7 +3,6 @@ from Tasks import *
 
 
 if __name__ == '__main__':
-
     hide_cortana_button()
     hide_task_view_button()
     hide_search_bar()

@@ -3,6 +3,13 @@ import RegUtils
 
 
 def hide_cortana_button(hide: bool = True) -> bool:
+    """
+    Hide Cortana button in taskbar.
+
+    :param bool hide: True to hide, False to show.
+    :return: True if operation was successful, False otherwise.
+    """
+
     root_path = RegUtils.HKCU
     key_path = join('SOFTWARE', 'Microsoft', 'Windows', 'CurrentVersion', 'Explorer', 'Advanced')
     value_name = 'ShowCortanaButton'
@@ -15,6 +22,13 @@ def hide_cortana_button(hide: bool = True) -> bool:
 
 
 def hide_task_view_button(hide: bool = True) -> bool:
+    """
+    Hide Task View button in taskbar.
+
+    :param bool hide: True to hide, False to show.
+    :return: True if operation was successful, False otherwise.
+    """
+
     root_path = RegUtils.HKCU
     key_path = join('SOFTWARE', 'Microsoft', 'Windows', 'CurrentVersion', 'Explorer', 'Advanced')
     value_name = 'ShowTaskViewButton'
@@ -27,6 +41,13 @@ def hide_task_view_button(hide: bool = True) -> bool:
 
 
 def hide_search_bar(hide: bool = True) -> bool:
+    """
+    Hide Search from taskbar.
+
+    :param bool hide: True to hide, False to show.
+    :return: True if operation was successful, False otherwise.
+    """
+
     root_path = RegUtils.HKCU
     key_path = join('SOFTWARE', 'Microsoft', 'Windows', 'CurrentVersion', 'Search')
     value_name = 'SearchboxTaskbarMode'
@@ -39,6 +60,13 @@ def hide_search_bar(hide: bool = True) -> bool:
 
 
 def hide_news_and_weather(hide: bool = True) -> bool:
+    """
+    Hide News and interests button in taskbar.
+
+    :param bool hide: True to hide, False to show.
+    :return: True if operation was successful, False otherwise.
+    """
+
     root_path = RegUtils.HKCU
     key_path = join('SOFTWARE', 'Microsoft', 'Windows', 'CurrentVersion', 'Feeds')
     value_name = 'ShellFeedsTaskbarViewMode'
@@ -51,6 +79,13 @@ def hide_news_and_weather(hide: bool = True) -> bool:
 
 
 def show_extensions_for_known_filetypes(show: bool = True) -> bool:
+    """
+    Show file extensions for known filetypes.
+
+    :param bool show: True to show, False to hide.
+    :return: True if operation was successful, False otherwise.
+    """
+
     root_path = RegUtils.HKCU
     key_path = join('SOFTWARE', 'Microsoft', 'Windows', 'CurrentVersion', 'Explorer', 'Advanced')
     value_name = 'HideFileExt'
@@ -63,6 +98,13 @@ def show_extensions_for_known_filetypes(show: bool = True) -> bool:
 
 
 def open_this_pc_instead_of_quick_access(toggle: bool = True) -> bool:
+    """
+    Open This PC instead of Quick access when opening a new explorer window.
+
+    :param bool toggle: True to open This PC, False to open Quick access.
+    :return: True if operation was successful, False otherwise.
+    """
+
     root_path = RegUtils.HKCU
     key_path = join('SOFTWARE', 'Microsoft', 'Windows', 'CurrentVersion', 'Explorer', 'Advanced')
     value_name = 'LaunchTo'
@@ -75,6 +117,13 @@ def open_this_pc_instead_of_quick_access(toggle: bool = True) -> bool:
 
 
 def hide_recent_files_in_explorer(hide: bool = True) -> bool:
+    """
+    Hide recently used files in Quick access.
+
+    :param bool hide: True to hide, False to show.
+    :return: True if operation was successful, False otherwise.
+    """
+
     root_path = RegUtils.HKCU
     key_path = join('SOFTWARE', 'Microsoft', 'Windows', 'CurrentVersion', 'Explorer')
     value_name = 'ShowRecent'
@@ -87,6 +136,13 @@ def hide_recent_files_in_explorer(hide: bool = True) -> bool:
 
 
 def hide_frequent_files_in_explorer(hide: bool = True) -> bool:
+    """
+    Hide frequently used folders in Quick access.
+
+    :param bool hide: True to hide, False to show.
+    :return: True if operation was successful, False otherwise.
+    """
+
     root_path = RegUtils.HKCU
     key_path = join('SOFTWARE', 'Microsoft', 'Windows', 'CurrentVersion', 'Explorer')
     value_name = 'ShowFrequent'
