@@ -1,18 +1,11 @@
 import winreg
 
-HKLM = winreg.HKEY_LOCAL_MACHINE
-HKCU = winreg.HKEY_CURRENT_USER
-HKCR = winreg.HKEY_CLASSES_ROOT
-HKCC = winreg.HKEY_CURRENT_CONFIG
-HKU = winreg.HKEY_USERS
-
-DWORD = winreg.REG_DWORD
+Consts = winreg
 
 
 def add_or_update_reg_value(root_path: int, key_path: str, value_name: str, key_type: int, new_value: str) -> bool:
     """
-    add a new registry key with the provided value.
-    return True if key is successfully added/ updated, False otherwise.
+    Add a new registry key with the provided value.
 
     :param int root_path: an HKEY constant , must be one of RegUtils.HK*
     :param str key_path: the full path of the key
@@ -20,6 +13,7 @@ def add_or_update_reg_value(root_path: int, key_path: str, value_name: str, key_
     :param int key_type: the type of the registry key TODO: finish later
     :param str new_value: the value to be set
     :rtype: bool
+    :return: True if key is successfully added/updated, False otherwise.
     """
 
     try:
