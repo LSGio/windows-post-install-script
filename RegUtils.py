@@ -3,7 +3,7 @@ import winreg
 Consts = winreg
 
 
-def add_or_update_reg_value(root_path: int, key_path: str, value_name: str, key_type: int, new_value: str) -> bool:
+def add_or_update_reg_value(root_path: int, key_path: str, value_name: str, key_type: int, new_value: str | int) -> bool:
     """
     Add a new registry key with the provided value.
 
@@ -21,7 +21,8 @@ def add_or_update_reg_value(root_path: int, key_path: str, value_name: str, key_
             with winreg.CreateKeyEx(root_key, key_path, 0, winreg.KEY_WRITE) as sub_key:
                 winreg.SetValueEx(sub_key, value_name, 0, key_type, new_value)
                 return True
-    except (OSError, WindowsError):
+    except (OSError, WindowsError) as e:
+        print(e)
         return False
 
 
@@ -41,7 +42,8 @@ def delete_reg_value(root_path: int, key_path: str, value_name: str) -> bool:
             with winreg.CreateKeyEx(root_key, key_path, 0, winreg.KEY_ALL_ACCESS) as sub_key:
                 winreg.DeleteValue(sub_key, value_name)
                 return True
-    except (OSError, WindowsError):
+    except (OSError, WindowsError) as e:
+        print(e)
         return False
 
     pass
@@ -63,4 +65,5 @@ def get_value_of_reg_key(root_path: int, key_path: str, value_name: str) -> str:
             with winreg.CreateKeyEx(root_key, key_path, 0, winreg.KEY_READ) as sub_key:
                 return winreg.QueryValueEx(sub_key, value_name)[0]
     except (OSError, WindowsError) as e:
+        print(e)
         return ""

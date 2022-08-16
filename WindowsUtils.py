@@ -1,7 +1,8 @@
 import ctypes
-from os.path import join
-import RegUtils
 import sys
+from os.path import join
+
+import RegUtils
 
 
 def request_elevated_permissions() -> None:
@@ -32,7 +33,7 @@ def get_windows_build_number() -> str:
     :return: The current build version
     """
 
-    root_path = RegUtils.HKLM
+    root_path = RegUtils.Consts.HKEY_LOCAL_MACHINE
     key_path = join('SOFTWARE', 'Microsoft', 'Windows NT', 'CurrentVersion')
     value_name = 'DisplayVersion'
     return str(RegUtils.get_value_of_reg_key(root_path, key_path, value_name))
