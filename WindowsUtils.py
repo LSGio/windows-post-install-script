@@ -5,16 +5,16 @@ from os.path import join
 import RegUtils
 
 
-def request_elevated_permissions() -> None:
+def requestElevatedPermissions() -> None:
     """
     Prompt the user to re-run the program as admin.
     """
 
-    if not is_running_as_admin():
+    if not isRunningAsAdmin():
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
 
 
-def is_running_as_admin() -> bool:
+def isRunningAsAdmin() -> bool:
     """
     Check if current process is running as admin.
 
@@ -25,7 +25,7 @@ def is_running_as_admin() -> bool:
     return ctypes.windll.shell32.IsUserAnAdmin() == 1
 
 
-def get_windows_build_number() -> str:
+def getWindowsBuildNumber() -> str:
     """
     Get the current windows build version.
 
@@ -36,4 +36,4 @@ def get_windows_build_number() -> str:
     root_path = RegUtils.Consts.HKEY_LOCAL_MACHINE
     key_path = join('SOFTWARE', 'Microsoft', 'Windows NT', 'CurrentVersion')
     value_name = 'DisplayVersion'
-    return str(RegUtils.get_value_of_reg_key(root_path, key_path, value_name))
+    return str(RegUtils.getValueOfRegKey(root_path, key_path, value_name))

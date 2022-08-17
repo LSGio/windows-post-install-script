@@ -3,7 +3,7 @@ import winreg
 Consts = winreg
 
 
-def add_or_update_reg_value(root_path: int, key_path: str, value_name: str, key_type: int, new_value: str | int) -> bool:
+def addOrUpdateRegValue(root_path: int, key_path: str, value_name: str, key_type: int, new_value: str | int) -> bool:
     """
     Add a new registry key with the provided value.
 
@@ -26,7 +26,7 @@ def add_or_update_reg_value(root_path: int, key_path: str, value_name: str, key_
         return False
 
 
-def delete_reg_value(root_path: int, key_path: str, value_name: str) -> bool:
+def deleteRegValue(root_path: int, key_path: str, value_name: str) -> bool:
     """
     Delete a given registry value if it exists.
 
@@ -49,7 +49,7 @@ def delete_reg_value(root_path: int, key_path: str, value_name: str) -> bool:
     pass
 
 
-def get_value_of_reg_key(root_path: int, key_path: str, value_name: str) -> str:
+def getValueOfRegKey(root_path: int, key_path: str, value_name: str) -> str:
     """
     Read the value of a given registry value name.
 

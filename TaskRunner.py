@@ -1,9 +1,9 @@
 
+
 import Logger
-import TextUtils
 
 
-def runnable_task(task: object) -> object:
+def runnableTask(task):
     """
     Wrapper function , wraps a task and prints additional logging information.
 
@@ -11,10 +11,10 @@ def runnable_task(task: object) -> object:
     :rtype: object
     :return: The wrapped function object
     """
-    def wrapped_task(*args, **kwargs):
-        task_name = TextUtils.to_camel_case(task.__name__)
-        Logger.log_d('Executing task : ' + task_name)
+    def wrappedTask(*args, **kwargs):
+        task_name = task.__name__
+        Logger.logD('Executing task : ' + task_name)
         task(*args, **kwargs)
-        Logger.log_d('Finished task : ' + task_name)
+        Logger.logD('Finished task : ' + task_name)
 
-    return wrapped_task
+    return wrappedTask
