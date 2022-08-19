@@ -3,15 +3,31 @@
 from datetime import datetime
 
 import Globals
+import WindowsUtils
 
 
-def logD(msg: str) -> None:
+def logD(message: str) -> None:
     """
     Print a log message, with current date and time info.
 
-    :param: msg: The message to be printed
+    :param message: The message to be printed
     """
+
     if Globals.Build.isDebug:
         today = datetime.today().strftime("%d/%m/%Y")
         now = datetime.now().strftime("%H:%M:%S:%f")
-        print(today, now, msg)
+        print(today, now, message)
+
+
+def logBuildInfo() -> None:
+    """
+    Print system and script info.
+    mainly used for log purposes
+
+    """
+
+    logD(Globals.Build.appTitle)
+    logD('Script running in debug mode : ' + str(Globals.Build.isDebug))
+    logD('Script version : ' + Globals.Build.versionString)
+    logD('Detected OS : ' + WindowsUtils.getWindowsProductName())
+    logD('OS Build Number : ' + str(WindowsUtils.getWindowsBuildNumber()))

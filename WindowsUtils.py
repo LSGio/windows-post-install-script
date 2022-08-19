@@ -1,7 +1,7 @@
 import ctypes
 import sys
-from os.path import join
-
+import Globals
+import Logger
 import RegUtils
 
 
@@ -12,6 +12,8 @@ def requestElevatedPermissions() -> None:
 
     if not isRunningAsAdmin():
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+    else:
+        Logger.logD('Already running as admin.')
 
 
 def isRunningAsAdmin() -> bool:
@@ -25,15 +27,39 @@ def isRunningAsAdmin() -> bool:
     return ctypes.windll.shell32.IsUserAnAdmin() == 1
 
 
-def getWindowsBuildNumber() -> str:
+def getWindowsBuildNumber() -> int:
     """
-    Get the current windows build version.
+    Get the current windows build number.
 
-    :rtype: str
-    :return: The current build version
+    :rtype: int
+    :return: The current build number
     """
 
-    root_path = RegUtils.Consts.HKEY_LOCAL_MACHINE
-    key_path = join('SOFTWARE', 'Microsoft', 'Windows NT', 'CurrentVersion')
-    value_name = 'DisplayVersion'
-    return str(RegUtils.getValueOfRegKey(root_path, key_path, value_name))
+    rootPath = RegUtils.Consts.HKEY_LOCAL_MACHINE
+    keyPath = Globals.RegKeys.KEY_OS_INFO
+    valueName = Globals.RegValueNames.VALUENAME_OS_BUILD_NUMBER
+    return int(RegUtils.getValueOfRegKey(rootPath, keyPath, valueName))
+
+
+def getWindowsEditionId() -> str:
+    """
+        Get the current windows edition id.
+
+        :rtype: str
+        :return: The current edition id
+        """
+
+    rootPath = RegUtils.Consts.HKEY_LOCAL_MACHINE
+    keyPath = Globals.RegKeys.KEY_OS_INFO
+    valueName = Globals.RegValueNames.VALUENAME_OS_EDITION
+    return RegUtils.getValueOfRegKey(rootPath, keyPath, valueName)
+
+
+def getWindowsProductName() -> str:
+
+    editionID = getWindowsEditionId()
+    buildNumber = getWindowsBuildNumber()
+    if buildNumber >= Globals.WindowsBuilds.WINDOWS_11_INITAL_BUILD_NUMBER:
+        return 'Windows 11 ' + editionID
+    elif buildNumber >= Globals.WindowsBuilds.WINDOWS_10_INITIAL_BUILD_NUMBER:
+        return 'Windows 10 ' + editionID

@@ -1,8 +1,7 @@
 from os.path import join
-
+from TaskRunner import runnableTask
 import Globals
 import RegUtils
-from TaskRunner import runnableTask
 
 
 @runnableTask
@@ -17,7 +16,7 @@ def hideCortanaButton(hide: bool = True) -> bool:
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
     key_path = Globals.RegKeys.KEY_SHOW_CORTANA_BUTTON
-    value_name = 'ShowCortanaButton'
+    value_name = Globals.RegValueNames.VALUENAME_SHOW_CORTANA_BUTTON
     key_type = RegUtils.Consts.REG_DWORD
     new_value = 0 if hide else 1
     return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)
@@ -35,7 +34,7 @@ def hideTaskViewButton(hide: bool = True) -> bool:
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
     key_path = Globals.RegKeys.KEY_SHOW_TASK_VIEW_BUTTON
-    value_name = 'ShowTaskViewButton'
+    value_name = Globals.RegValueNames.VALUENAME_SHOW_TASK_VIEW_BUTTON
     key_type = RegUtils.Consts.REG_DWORD
     new_value = 0 if hide else 1
     return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)
@@ -53,7 +52,7 @@ def hideSearchBar(hide: bool = True) -> bool:
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
     key_path = Globals.RegKeys.KEY_SEARCHBAR_VIEW_MODE
-    value_name = 'SearchboxTaskbarMode'
+    value_name = Globals.RegValueNames.VALUENAME_SEARCHBAR_VIEW_MODE
     key_type = RegUtils.Consts.REG_DWORD
     new_value = 0 if hide else 2
     return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)
@@ -71,7 +70,7 @@ def hideNewsAndInterests(hide: bool = True) -> bool:
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
     key_path = Globals.RegKeys.KEY_NEWS_AND_INTERESTS_VIEW_MODE
-    value_name = 'ShellFeedsTaskbarViewMode'
+    value_name = Globals.RegValueNames.VALUENAME_NEWS_AND_INTERESTS_VIEW_MODE
     key_type = RegUtils.Consts.REG_DWORD
     new_value = 2 if hide else 0
     return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)
@@ -89,7 +88,7 @@ def showExtensionsForKnownFiletypes(show: bool = True) -> bool:
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
     key_path = Globals.RegKeys.KEY_HIDE_FILE_EXTENSIONS
-    value_name = 'HideFileExt'
+    value_name = Globals.RegValueNames.VALUENAME_HIDE_FILE_EXTENSIONS
     key_type = RegUtils.Consts.REG_DWORD
     new_value = 0 if show else 1
     return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)
@@ -107,7 +106,7 @@ def openThisPcInsteadOfQuickAccess(toggle: bool = True) -> bool:
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
     key_path = Globals.RegKeys.KEY_OPEN_THIS_PC_OR_QUICK_ACCESS
-    value_name = 'LaunchTo'
+    value_name = Globals.RegValueNames.VALUENAME_OPEN_THIS_PC_OR_QUICK_ACCESS
     key_type = RegUtils.Consts.REG_DWORD
     new_value = 1 if toggle else 2
     return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)
@@ -125,7 +124,7 @@ def hideRecentFilesInExplorer(hide: bool = True) -> bool:
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
     key_path = Globals.RegKeys.KEY_SHOW_RECENT_FILES_IN_EXPLORER
-    value_name = 'ShowRecent'
+    value_name = Globals.RegValueNames.VALUENAME_SHOW_RECENT_FILES_IN_EXPLORER
     key_type = RegUtils.Consts.REG_DWORD
     new_value = 0 if hide else 1
     return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)
@@ -143,7 +142,7 @@ def hideFrequentFilesInExplorer(hide: bool = True) -> bool:
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
     key_path = Globals.RegKeys.KEY_SHOW_FREQUENT_FILES_IN_EXPLORER
-    value_name = 'ShowFrequent'
+    value_name = Globals.RegValueNames.VALUENAME_SHOW_FREQUENT_FILES_IN_EXPLORER
     key_type = RegUtils.Consts.REG_DWORD
     new_value = 0 if hide else 1
     return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)
@@ -161,28 +160,96 @@ def toggleDeliveryOptimization(toggle: bool = False) -> bool:
 
     root_path = RegUtils.Consts.HKEY_LOCAL_MACHINE
     key_path = Globals.RegKeys.KEY_TOGGLE_DELIVERY_OPTIMIZATION
-    value_name = 'Start'
+    value_name = Globals.RegValueNames.VALUENAME_TOGGLE_DELIVERY_OPTIMIZATION
     key_type = RegUtils.Consts.REG_DWORD
     new_value = 2 if toggle else 4
     return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)
 
-
 @runnableTask
-def addIconsToDesktop() -> bool:
+def showThisPcDesktopIcon(show: bool = True) -> bool:
     """
-    Add This PC, Control Panel and Users Files icons to the desktop.
+    Show or hide This PC desktop icon.
 
-    :rtype: bool.
+    :param bool show: True to show, False to hide.
+    :rtype: bool
     :return: True if operation was successful, False otherwise.
     """
-    root_path = RegUtils.Consts.HKEY_CURRENT_USER
-    key_path = join('SOFTWARE', 'Microsoft', 'Windows', 'CurrentVersion', 'Explorer', 'HideDesktopIcons',
-                    'NewStartPanel')
 
+    root_path = RegUtils.Consts.HKEY_LOCAL_MACHINE
+    key_path = Globals.RegKeys.KEY_HIDE_DESKTOP_ICONS
+    value_name = Globals.RegValueNames.VALUENAME_HIDE_THIS_PC_ICON
     key_type = RegUtils.Consts.REG_DWORD
+    new_value = 0 if show else 1
+    return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)
 
-    result = RegUtils.addOrUpdateRegValue(root_path, key_path, Globals.RegKeys.KEY_HIDE_THIS_PC_ICON, key_type, 0) and \
-             RegUtils.addOrUpdateRegValue(root_path, key_path, Globals.RegKeys.KEY_HIDE_CONTROL_PANEL_ICON, key_type, 0) and \
-             RegUtils.addOrUpdateRegValue(root_path, key_path, Globals.RegKeys.KEY_HIDE_USERS_FILES_ICON, key_type, 0)
 
-    return result
+@runnableTask
+def showControlPanelDesktopIcon(show: bool = True) -> bool:
+    """
+    Show or hide Control Panel desktop icon.
+
+    :param bool show: True to show, False to hide.
+    :rtype: bool
+    :return: True if operation was successful, False otherwise.
+    """
+
+    root_path = RegUtils.Consts.HKEY_LOCAL_MACHINE
+    key_path = Globals.RegKeys.KEY_HIDE_DESKTOP_ICONS
+    value_name = Globals.RegValueNames.VALUENAME_HIDE_CONTROL_PANEL_ICON
+    key_type = RegUtils.Consts.REG_DWORD
+    new_value = 0 if show else 1
+    return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)
+
+
+@runnableTask
+def showRecycleBinDesktopIcon(show: bool = True) -> bool:
+    """
+    Show or hide Recycle Bin desktop icon.
+
+    :param bool show: True to show, False to hide.
+    :rtype: bool
+    :return: True if operation was successful, False otherwise.
+    """
+
+    root_path = RegUtils.Consts.HKEY_LOCAL_MACHINE
+    key_path = Globals.RegKeys.KEY_HIDE_DESKTOP_ICONS
+    value_name = Globals.RegValueNames.VALUENAME_HIDE_RECYCLE_BIN_ICON
+    key_type = RegUtils.Consts.REG_DWORD
+    new_value = 0 if show else 1
+    return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)
+
+
+@runnableTask
+def showNetworkDesktopIcon(show: bool = True) -> bool:
+    """
+    Show or hide Network desktop icon.
+
+    :param bool show: True to show, False to hide.
+    :rtype: bool
+    :return: True if operation was successful, False otherwise.
+    """
+
+    root_path = RegUtils.Consts.HKEY_LOCAL_MACHINE
+    key_path = Globals.RegKeys.KEY_HIDE_DESKTOP_ICONS
+    value_name = Globals.RegValueNames.VALUENAME_HIDE_NETWORK_ICON
+    key_type = RegUtils.Consts.REG_DWORD
+    new_value = 0 if show else 1
+    return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)
+
+
+@runnableTask
+def showUserFolderDesktopIcon(show: bool = True) -> bool:
+    """
+    Show or hide User folder desktop icon.
+
+    :param bool show: True to show, False to hide.
+    :rtype: bool
+    :return: True if operation was successful, False otherwise.
+    """
+
+    root_path = RegUtils.Consts.HKEY_LOCAL_MACHINE
+    key_path = Globals.RegKeys.KEY_HIDE_DESKTOP_ICONS
+    value_name = Globals.RegValueNames.VALUENAME_HIDE_USERS_FILES_ICON
+    key_type = RegUtils.Consts.REG_DWORD
+    new_value = 0 if show else 1
+    return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)

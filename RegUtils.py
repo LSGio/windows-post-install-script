@@ -1,69 +1,69 @@
 import winreg
 
+import Logger
+
 Consts = winreg
 
 
-def addOrUpdateRegValue(root_path: int, key_path: str, value_name: str, key_type: int, new_value: str | int) -> bool:
+def addOrUpdateRegValue(rootPath: int, keyPath: str, valueName: str, keyType: int, newValue: str | int) -> bool:
     """
     Add a new registry key with the provided value.
 
-    :param int root_path: an HKEY constant , must be one of RegUtils.HK*
-    :param str key_path: the full path of the key
-    :param value_name: the registry value to be modified inside the key
-    :param int key_type: the type of the registry key TODO: finish later
-    :param str new_value: the value to be set
+    :param int rootPath: an HKEY constant , must be one of RegUtils.HK*
+    :param str keyPath: the full path of the key
+    :param valueName: the registry value to be modified inside the key
+    :param int keyType: the type of the registry key TODO: finish later
+    :param str newValue: the value to be set
     :rtype: bool
     :return: True if key is successfully added/updated, False otherwise.
     """
 
     try:
-        with winreg.ConnectRegistry(None, root_path) as root_key:
-            with winreg.CreateKeyEx(root_key, key_path, 0, winreg.KEY_WRITE) as sub_key:
-                winreg.SetValueEx(sub_key, value_name, 0, key_type, new_value)
+        with winreg.ConnectRegistry(None, rootPath) as root_key:
+            with winreg.CreateKeyEx(root_key, keyPath, 0, winreg.KEY_WRITE) as sub_key:
+                winreg.SetValueEx(sub_key, valueName, 0, keyType, newValue)
                 return True
     except (OSError, WindowsError) as e:
-        print(e)
+        Logger.logD(e)
         return False
 
 
-def deleteRegValue(root_path: int, key_path: str, value_name: str) -> bool:
+def deleteRegValue(rootPath: int, keyPath: str, valueName: str) -> bool:
     """
     Delete a given registry value if it exists.
 
-    :param int root_path: an HKEY constant , must be one of RegUtils.HK*
-    :param str key_path: the full path of the key
-    :param str value_name: the registry value name to be deleted
+    :param int rootPath: an HKEY constant , must be one of RegUtils.HK*
+    :param str keyPath: the full path of the key
+    :param str valueName: the registry value name to be deleted
     :rtype: bool
     :return: True if key is successfully deleted, False otherwise.
     """
 
     try:
-        with winreg.ConnectRegistry(None, root_path) as root_key:
-            with winreg.CreateKeyEx(root_key, key_path, 0, winreg.KEY_ALL_ACCESS) as sub_key:
-                winreg.DeleteValue(sub_key, value_name)
+        with winreg.ConnectRegistry(None, rootPath) as root_key:
+            with winreg.CreateKeyEx(root_key, keyPath, 0, winreg.KEY_ALL_ACCESS) as sub_key:
+                winreg.DeleteValue(sub_key, valueName)
                 return True
     except (OSError, WindowsError) as e:
-        print(e)
+        Logger.logD(e)
         return False
 
-    pass
 
-
-def getValueOfRegKey(root_path: int, key_path: str, value_name: str) -> str:
+def getValueOfRegKey(rootPath: int, keyPath: str, valueName: str) -> str:
     """
     Read the value of a given registry value name.
 
-    :param int root_path: an HKEY constant , must be one of RegUtils.HK*
-    :param str key_path: the full path of the key
-    :param str value_name: the registry value to read from
+    :param int rootPath: an HKEY constant , must be one of RegUtils.HK*
+    :param str keyPath: the full path of the key
+    :param str valueName: the registry value to read from
     :rtype: str
     :return: the value as a string if it exists, an empty string otherwise.
     """
 
     try:
-        with winreg.ConnectRegistry(None, root_path) as root_key:
-            with winreg.CreateKeyEx(root_key, key_path, 0, winreg.KEY_READ) as sub_key:
-                return winreg.QueryValueEx(sub_key, value_name)[0]
+        with winreg.ConnectRegistry(None, rootPath) as root_key:
+            with winreg.CreateKeyEx(root_key, keyPath, 0, winreg.KEY_READ) as sub_key:
+                return winreg.QueryValueEx(sub_key, valueName)[0]
     except (OSError, WindowsError) as e:
-        print(e)
+        Logger.logD(e)
         return ""
