@@ -3,7 +3,7 @@
 from datetime import datetime
 
 import Globals
-import WindowsUtils
+import SystemUtils
 
 
 def logD(message: str) -> None:
@@ -29,5 +29,5 @@ def logBuildInfo() -> None:
     logD(Globals.Build.appTitle)
     logD('Script running in debug mode : ' + str(Globals.Build.isDebug))
     logD('Script version : ' + Globals.Build.versionString)
-    logD('Detected OS : ' + WindowsUtils.getWindowsProductName())
-    logD('OS Build Number : ' + str(WindowsUtils.getWindowsBuildNumber()))
+    logD('Detected OS : ' + SystemUtils.getOsProductName())
+    logD('OS Build Number : ' + str(SystemUtils.getOsBuildNumber()))

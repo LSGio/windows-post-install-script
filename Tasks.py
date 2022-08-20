@@ -1,4 +1,3 @@
-from os.path import join
 from TaskRunner import runnableTask
 import Globals
 import RegUtils
@@ -165,6 +164,7 @@ def toggleDeliveryOptimization(toggle: bool = False) -> bool:
     new_value = 2 if toggle else 4
     return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)
 
+
 @runnableTask
 def showThisPcDesktopIcon(show: bool = True) -> bool:
     """
@@ -252,4 +252,22 @@ def showUserFolderDesktopIcon(show: bool = True) -> bool:
     value_name = Globals.RegValueNames.VALUENAME_HIDE_USERS_FILES_ICON
     key_type = RegUtils.Consts.REG_DWORD
     new_value = 0 if show else 1
+    return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)
+
+
+@runnableTask
+def disableGameMode(disable: bool = True) -> bool:
+    """
+    Enable or disable Game Mode that was introduced in build 1703 of Windows 10.
+
+    :param bool disable: True to disable, False to enable.
+    :rtype: bool
+    :return: True if operation was successful, False otherwise.
+    """
+
+    root_path = RegUtils.Consts.HKEY_CURRENT_USER
+    key_path = Globals.RegKeys.KEY_TOGGLE_GAME_MODE
+    value_name = Globals.RegValueNames.VALUENAME_HIDE_USERS_FILES_ICON
+    key_type = RegUtils.Consts.REG_DWORD
+    new_value = 0 if disable else 1
     return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)

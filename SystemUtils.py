@@ -11,6 +11,7 @@ def requestElevatedPermissions() -> None:
     """
 
     if not isRunningAsAdmin():
+        # TODO : rewrite with process and return codes
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
     else:
         Logger.logD('Already running as admin.')
@@ -27,9 +28,9 @@ def isRunningAsAdmin() -> bool:
     return ctypes.windll.shell32.IsUserAnAdmin() == 1
 
 
-def getWindowsBuildNumber() -> int:
+def getOsBuildNumber() -> int:
     """
-    Get the current windows build number.
+    Get the current OS build number.
 
     :rtype: int
     :return: The current build number
@@ -41,13 +42,13 @@ def getWindowsBuildNumber() -> int:
     return int(RegUtils.getValueOfRegKey(rootPath, keyPath, valueName))
 
 
-def getWindowsEditionId() -> str:
+def getOsEditionId() -> str:
     """
-        Get the current windows edition id.
+    Get the current OS edition id.
 
-        :rtype: str
-        :return: The current edition id
-        """
+    :rtype: str
+    :return: The current edition id
+    """
 
     rootPath = RegUtils.Consts.HKEY_LOCAL_MACHINE
     keyPath = Globals.RegKeys.KEY_OS_INFO
@@ -55,10 +56,10 @@ def getWindowsEditionId() -> str:
     return RegUtils.getValueOfRegKey(rootPath, keyPath, valueName)
 
 
-def getWindowsProductName() -> str:
+def getOsProductName() -> str:
 
-    editionID = getWindowsEditionId()
-    buildNumber = getWindowsBuildNumber()
+    editionID = getOsEditionId()
+    buildNumber = getOsBuildNumber()
     if buildNumber >= Globals.WindowsBuilds.WINDOWS_11_INITAL_BUILD_NUMBER:
         return 'Windows 11 ' + editionID
     elif buildNumber >= Globals.WindowsBuilds.WINDOWS_10_INITIAL_BUILD_NUMBER:

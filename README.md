@@ -4,17 +4,22 @@
 
 This script aims to help at disabling all the annoying and/or unused features of windows 10/11
 
-## Whatacn it currently do
+## What can it do... for now
 
 Windows 10:
 
-* Hide Cortana button in taskbar
-* Hide Task View button in taskbar
-* Hide Search bar in taskbar
-* Hide News and interests in taskbar
-* Show extensions for known filetypes
-* Open This PC instead of Quick access when openning Explorer
-* Disable recent files in Quick access
-* Disable Frequently accessed files in explorer
-* Disable Delivery Optimization service
-* Show most common desktop icons like This PC, Control Panel...
+* Show / Hide Cortana button in taskbar
+* Show / Hide Task View button in taskbar
+* Show / Hide Search bar in taskbar
+* Show / Hide News and interests in taskbar
+* Show / Hide extensions for known filetypes
+* Show / Hide most common desktop icons like This PC, Control Panel...
+* Enable / Disable Recent files in Quick access
+* Enable / Disable Frequently accessed files in explorer
+* Enable / Disable Delivery Optimization service
+* Enable / Disable Game Mode globally
+* Open This PC instead of Quick access when opening Explorer
+
+Windows 11:
+
+Not tested yet

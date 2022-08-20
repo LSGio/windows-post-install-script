@@ -4,8 +4,8 @@ class Build:
 
     appTitle = "Windows post install script"
     isDebug = True
-    versionNumber = 103
-    versionString = "1.0.3"
+    versionNumber = 104
+    versionString = "1.0.4"
 
 
 class WindowsBuilds:
@@ -36,6 +36,7 @@ class RegKeys:
 
     # System-wide settings
     KEY_TOGGLE_DELIVERY_OPTIMIZATION = 'SYSTEM\\CurrentControlSet\\Services\\DoSvc'
+    KEY_TOGGLE_GAME_MODE = 'SOFTWARE\\Microsoft\\GameBar'
 
 
 class RegValueNames:
@@ -66,3 +67,4 @@ class RegValueNames:
 
     # System-wide settings
     VALUENAME_TOGGLE_DELIVERY_OPTIMIZATION = 'Start'
+    VALUENAME_TOGGLE_GAME_MODE = 'AllowAutoGameMode | AutoGameModeEnabled'    # TODO : check later
