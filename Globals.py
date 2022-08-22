@@ -4,8 +4,8 @@ class Build:
 
     appTitle = "Windows post install script"
     isDebug = True
-    versionNumber = 104
-    versionString = "1.0.4"
+    versionNumber = 105
+    versionString = "1.0.5"
 
 
 class WindowsBuilds:
@@ -37,6 +37,9 @@ class RegKeys:
     # System-wide settings
     KEY_TOGGLE_DELIVERY_OPTIMIZATION = 'SYSTEM\\CurrentControlSet\\Services\\DoSvc'
     KEY_TOGGLE_GAME_MODE = 'SOFTWARE\\Microsoft\\GameBar'
+    KEY_TOGGLE_STICKY_KEYS_1 = 'Control Panel\\Accessibility\\StickyKeys'
+    KEY_TOGGLE_STICKY_KEYS_2 = 'Control Panel\\Accessibility\\ToggleKeys'
+    KEY_TOGGLE_STICKY_KEYS_3 = 'Control Panel\\Accessibility\\Keyboard Response'
 
 
 class RegValueNames:
@@ -67,4 +70,6 @@ class RegValueNames:
 
     # System-wide settings
     VALUENAME_TOGGLE_DELIVERY_OPTIMIZATION = 'Start'
-    VALUENAME_TOGGLE_GAME_MODE = 'AllowAutoGameMode | AutoGameModeEnabled'    # TODO : check later
+    VALUENAME_TOGGLE_GAME_MODE_1 = 'AllowAutoGameMode'
+    VALUENAME_TOGGLE_GAME_MODE_2 = 'AutoGameModeEnabled'
+    VALUENAME_TOGGLE_STICKY_KEYS = 'Flags'

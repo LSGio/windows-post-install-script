@@ -64,3 +64,8 @@ def getOsProductName() -> str:
         return 'Windows 11 ' + editionID
     elif buildNumber >= Globals.WindowsBuilds.WINDOWS_10_INITIAL_BUILD_NUMBER:
         return 'Windows 10 ' + editionID
+
+
+def notifyRegistryChanged() -> None:
+
+    pass

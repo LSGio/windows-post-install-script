@@ -267,7 +267,36 @@ def disableGameMode(disable: bool = True) -> bool:
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
     key_path = Globals.RegKeys.KEY_TOGGLE_GAME_MODE
-    value_name = Globals.RegValueNames.VALUENAME_HIDE_USERS_FILES_ICON
+    value_name_1 = Globals.RegValueNames.VALUENAME_TOGGLE_GAME_MODE_1
+    value_name_2 = Globals.RegValueNames.VALUENAME_TOGGLE_GAME_MODE_2
     key_type = RegUtils.Consts.REG_DWORD
     new_value = 0 if disable else 1
-    return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)
+    res_1 = RegUtils.addOrUpdateRegValue(root_path, key_path, value_name_1, key_type, new_value)
+    res_2 = RegUtils.addOrUpdateRegValue(root_path, key_path, value_name_2, key_type, new_value)
+    return res_1 and res_2
+
+
+@runnableTask
+def disableStickyKeys(disable: bool = True) -> bool:
+    """
+    Enable or disable Sticky Keys
+    Note: when enabled, user still must use the keyboard shortcut to activate the feature.
+
+    :param bool disable: True to disable, False to enable.
+    :rtype: bool
+    :return: True if operation was successful, False otherwise.
+    """
+
+    root_path = RegUtils.Consts.HKEY_CURRENT_USER
+    key_path_1 = Globals.RegKeys.KEY_TOGGLE_STICKY_KEYS_1
+    key_path_2 = Globals.RegKeys.KEY_TOGGLE_STICKY_KEYS_2
+    key_path_3 = Globals.RegKeys.KEY_TOGGLE_STICKY_KEYS_3
+    value_name = Globals.RegValueNames.VALUENAME_TOGGLE_STICKY_KEYS
+    key_type = RegUtils.Consts.REG_SZ
+    new_value_1 = "506" if disable else "510"
+    new_value_2 = "58" if disable else "62"
+    new_value_3 = "122" if disable else "126"
+    res_1 = RegUtils.addOrUpdateRegValue(root_path, key_path_1, value_name, key_type, new_value_1)
+    res_2 = RegUtils.addOrUpdateRegValue(root_path, key_path_2, value_name, key_type, new_value_2)
+    res_3 = RegUtils.addOrUpdateRegValue(root_path, key_path_3, value_name, key_type, new_value_3)
+    return res_1 and res_2 and res_3
