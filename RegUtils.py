@@ -5,14 +5,14 @@ import Logger
 Consts = winreg
 
 
-def addOrUpdateRegValue(rootPath: int, keyPath: str, valueName: str, keyType: int, newValue: str | int) -> bool:
+def addOrUpdateRegValue(rootPath: int, keyPath: str, valueName: str, valueType: int, newValue: str | int) -> bool:
     """
     Add a new registry key with the provided value.
 
-    :param int rootPath: an HKEY constant , must be one of RegUtils.HK*
+    :param int rootPath: an HKEY constant , should be one of RegUtils.Consts.HK*
     :param str keyPath: the full path of the key
     :param valueName: the registry value to be modified inside the key
-    :param int keyType: the type of the registry key TODO: finish later
+    :param int valueType: the type of the registry value
     :param str newValue: the value to be set
     :rtype: bool
     :return: True if key is successfully added/updated, False otherwise.
@@ -21,7 +21,7 @@ def addOrUpdateRegValue(rootPath: int, keyPath: str, valueName: str, keyType: in
     try:
         with winreg.ConnectRegistry(None, rootPath) as root_key:
             with winreg.CreateKeyEx(root_key, keyPath, 0, winreg.KEY_WRITE) as sub_key:
-                winreg.SetValueEx(sub_key, valueName, 0, keyType, newValue)
+                winreg.SetValueEx(sub_key, valueName, 0, valueType, newValue)
                 return True
     except (OSError, WindowsError) as e:
         Logger.logD(e)
@@ -32,7 +32,7 @@ def deleteRegValue(rootPath: int, keyPath: str, valueName: str) -> bool:
     """
     Delete a given registry value if it exists.
 
-    :param int rootPath: an HKEY constant , must be one of RegUtils.HK*
+    :param int rootPath: an HKEY constant , should be one of RegUtils.Consts.HK*
     :param str keyPath: the full path of the key
     :param str valueName: the registry value name to be deleted
     :rtype: bool
@@ -53,7 +53,7 @@ def getValueOfRegKey(rootPath: int, keyPath: str, valueName: str) -> str:
     """
     Read the value of a given registry value name.
 
-    :param int rootPath: an HKEY constant , must be one of RegUtils.HK*
+    :param int rootPath: an HKEY constant , should be one of RegUtils.Consts.HK*
     :param str keyPath: the full path of the key
     :param str valueName: the registry value to read from
     :rtype: str
