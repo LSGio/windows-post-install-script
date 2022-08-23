@@ -29,5 +29,5 @@ def logBuildInfo() -> None:
     logD(Globals.Build.appTitle)
     logD('Script running in debug mode : ' + str(Globals.Build.isDebug))
     logD('Script version : ' + Globals.Build.versionString)
-    logD('Detected OS : ' + SystemUtils.getOsinfo())
+    logD('Detected OS : ' + SystemUtils.getOsInfo())
     logD('OS Build Number : ' + str(SystemUtils.getOsBuildNumber()))

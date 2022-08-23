@@ -18,6 +18,7 @@ Windows 10:
 * Enable / Disable Frequently accessed files in explorer
 * Enable / Disable Delivery Optimization service
 * Enable / Disable Game Mode globally
+* Enable / Disable Sticky Keys keyboard shortcut
 * Open This PC instead of Quick access when opening Explorer
 
 Windows 11:

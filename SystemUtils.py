@@ -21,8 +21,11 @@ def isRunningAsAdmin() -> bool:
     """
     Check if current process is running as admin.
 
-    :rtype: bool
-    :return: True if current process is running as admin, and False otherwise
+    return type:
+    bool
+
+    return:
+    True if current process is running as admin, and False otherwise
     """
 
     return ctypes.windll.shell32.IsUserAnAdmin() == 1
@@ -32,8 +35,11 @@ def getOsBuildNumber() -> int:
     """
     Get the current OS build number.
 
-    :rtype: int
-    :return: The current build number
+    return type:
+    int
+
+    return:
+    The current build number
     """
 
     rootPath = RegUtils.Consts.HKEY_LOCAL_MACHINE
@@ -46,8 +52,11 @@ def getOsEditionId() -> str:
     """
     Get the current OS edition id.
 
-    :rtype: str
-    :return: The current edition id
+    return type:
+    str
+
+    return:
+    The current edition id
     """
 
     rootPath = RegUtils.Consts.HKEY_LOCAL_MACHINE
@@ -60,8 +69,11 @@ def getOsProductName() -> str:
     """
     Get the current OS product name.
 
-    :rtype: str
-    :return: The current product name
+    return type:
+    str
+
+    return:
+    The current product name
     """
 
     rootPath = RegUtils.Consts.HKEY_LOCAL_MACHINE
@@ -74,8 +86,11 @@ def getOsInfo() -> str:
     """
     Get the current OS product name.
 
-    :rtype: str
-    :return: The current product name
+    rtype:
+    str
+
+    return:
+    The current product name
     TODO : finish later
     """
 

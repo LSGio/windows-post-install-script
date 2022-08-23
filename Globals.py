@@ -4,8 +4,8 @@ class Build:
 
     appTitle = "Windows post install script"
     isDebug = True
-    versionNumber = 105
-    versionString = "1.0.5"
+    versionNumber = 106
+    versionString = "1.0.6"
 
 
 class WindowsBuilds:

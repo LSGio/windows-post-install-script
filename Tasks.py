@@ -7,10 +7,7 @@ import RegUtils
 def hideCortanaButton(hide: bool = True) -> bool:
     """
     Hide Cortana button in taskbar.
-
-    :param bool hide: True to hide, False to show.
-    :rtype: bool
-    :return: True if operation was successful, False otherwise.
+    [True] to hide, False to show.
     """
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
@@ -25,10 +22,7 @@ def hideCortanaButton(hide: bool = True) -> bool:
 def hideTaskViewButton(hide: bool = True) -> bool:
     """
     Hide Task View button in taskbar.
-
-    :param bool hide: True to hide, False to show.
-    :rtype: bool
-    :return: True if operation was successful, False otherwise.
+    [True] to hide, False to show.
     """
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
@@ -43,10 +37,7 @@ def hideTaskViewButton(hide: bool = True) -> bool:
 def hideSearchBar(hide: bool = True) -> bool:
     """
     Hide Search from taskbar.
-
-    :param bool hide: True to hide, False to show.
-    :rtype: bool
-    :return: True if operation was successful, False otherwise.
+    [True] to hide, False to show.
     """
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
@@ -61,10 +52,7 @@ def hideSearchBar(hide: bool = True) -> bool:
 def hideNewsAndInterests(hide: bool = True) -> bool:
     """
     Hide News and interests button in taskbar.
-
-    :param bool hide: True to hide, False to show.
-    :rtype: bool
-    :return: True if operation was successful, False otherwise.
+    [True] to hide, False to show.
     """
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
@@ -79,10 +67,7 @@ def hideNewsAndInterests(hide: bool = True) -> bool:
 def showExtensionsForKnownFiletypes(show: bool = True) -> bool:
     """
     Show file extensions for known filetypes.
-
-    :param bool show: True to show, False to hide.
-    :rtype: bool
-    :return: True if operation was successful, False otherwise.
+    [True] to show, False to hide.
     """
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
@@ -97,10 +82,7 @@ def showExtensionsForKnownFiletypes(show: bool = True) -> bool:
 def openThisPcInsteadOfQuickAccess(toggle: bool = True) -> bool:
     """
     Open This PC instead of Quick access when opening a new explorer window.
-
-    :param bool toggle: True to open This PC, False to open Quick access.
-    :rtype: bool
-    :return: True if operation was successful, False otherwise.
+    [True] to open This PC, False to open Quick access.
     """
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
@@ -115,10 +97,7 @@ def openThisPcInsteadOfQuickAccess(toggle: bool = True) -> bool:
 def hideRecentFilesInExplorer(hide: bool = True) -> bool:
     """
     Hide recently used files in Quick access.
-
-    :param bool hide: True to hide, False to show.
-    :rtype: bool
-    :return: True if operation was successful, False otherwise.
+    [True] to hide, False to show.
     """
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
@@ -133,10 +112,7 @@ def hideRecentFilesInExplorer(hide: bool = True) -> bool:
 def hideFrequentFilesInExplorer(hide: bool = True) -> bool:
     """
     Hide frequently used folders in Quick access.
-
-    :param bool hide: True to hide, False to show.
-    :rtype: bool
-    :return: True if operation was successful, False otherwise.
+    [True] to hide, False to show.
     """
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
@@ -151,10 +127,7 @@ def hideFrequentFilesInExplorer(hide: bool = True) -> bool:
 def toggleDeliveryOptimization(toggle: bool = False) -> bool:
     """
     Enable or disable Delivery Optimization service.
-
-    :param bool toggle: True to enable, False to disable.
-    :rtype: bool
-    :return: True if operation was successful, False otherwise.
+    True to enable, [False] to disable.
     """
 
     root_path = RegUtils.Consts.HKEY_LOCAL_MACHINE
@@ -169,10 +142,7 @@ def toggleDeliveryOptimization(toggle: bool = False) -> bool:
 def showThisPcDesktopIcon(show: bool = True) -> bool:
     """
     Show or hide This PC desktop icon.
-
-    :param bool show: True to show, False to hide.
-    :rtype: bool
-    :return: True if operation was successful, False otherwise.
+    [True] to show, False to hide.
     """
 
     root_path = RegUtils.Consts.HKEY_LOCAL_MACHINE
@@ -187,10 +157,7 @@ def showThisPcDesktopIcon(show: bool = True) -> bool:
 def showControlPanelDesktopIcon(show: bool = True) -> bool:
     """
     Show or hide Control Panel desktop icon.
-
-    :param bool show: True to show, False to hide.
-    :rtype: bool
-    :return: True if operation was successful, False otherwise.
+    [True] to show, False to hide.
     """
 
     root_path = RegUtils.Consts.HKEY_LOCAL_MACHINE
@@ -205,10 +172,7 @@ def showControlPanelDesktopIcon(show: bool = True) -> bool:
 def showRecycleBinDesktopIcon(show: bool = True) -> bool:
     """
     Show or hide Recycle Bin desktop icon.
-
-    :param bool show: True to show, False to hide.
-    :rtype: bool
-    :return: True if operation was successful, False otherwise.
+    [True] to show, False to hide.
     """
 
     root_path = RegUtils.Consts.HKEY_LOCAL_MACHINE
@@ -223,10 +187,7 @@ def showRecycleBinDesktopIcon(show: bool = True) -> bool:
 def showNetworkDesktopIcon(show: bool = True) -> bool:
     """
     Show or hide Network desktop icon.
-
-    :param bool show: True to show, False to hide.
-    :rtype: bool
-    :return: True if operation was successful, False otherwise.
+    [True] to show, False to hide.
     """
 
     root_path = RegUtils.Consts.HKEY_LOCAL_MACHINE
@@ -241,10 +202,7 @@ def showNetworkDesktopIcon(show: bool = True) -> bool:
 def showUserFolderDesktopIcon(show: bool = True) -> bool:
     """
     Show or hide User folder desktop icon.
-
-    :param bool show: True to show, False to hide.
-    :rtype: bool
-    :return: True if operation was successful, False otherwise.
+    [True] to show, False to hide.
     """
 
     root_path = RegUtils.Consts.HKEY_LOCAL_MACHINE
@@ -259,10 +217,7 @@ def showUserFolderDesktopIcon(show: bool = True) -> bool:
 def disableGameMode(disable: bool = True) -> bool:
     """
     Enable or disable Game Mode that was introduced in build 1703 of Windows 10.
-
-    :param bool disable: True to disable, False to enable.
-    :rtype: bool
-    :return: True if operation was successful, False otherwise.
+    [True] to disable, False to enable.
     """
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
@@ -281,10 +236,7 @@ def disableStickyKeys(disable: bool = True) -> bool:
     """
     Enable or disable Sticky Keys
     Note: when enabled, user still must use the keyboard shortcut to activate the feature.
-
-    :param bool disable: True to disable, False to enable.
-    :rtype: bool
-    :return: True if operation was successful, False otherwise.
+    [True] to disable, False to enable.
     """
 
     root_path = RegUtils.Consts.HKEY_CURRENT_USER
