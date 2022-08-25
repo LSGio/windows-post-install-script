@@ -7,6 +7,11 @@ class Build:
     versionNumber = 106
     versionString = "1.0.6"
 
+class LogTags:
+
+    TAG_DEBUG = " DEBUG "
+    TAG_INFO = " INFO "
+
 
 class WindowsBuilds:
 
@@ -73,3 +78,8 @@ class RegValueNames:
     VALUENAME_TOGGLE_GAME_MODE_1 = 'AllowAutoGameMode'
     VALUENAME_TOGGLE_GAME_MODE_2 = 'AutoGameModeEnabled'
     VALUENAME_TOGGLE_STICKY_KEYS = 'Flags'
+
+
+class InputPrompts:
+
+    PROMPT_INPUT = "Your input : "

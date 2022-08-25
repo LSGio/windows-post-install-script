@@ -16,7 +16,18 @@ def logD(message: str) -> None:
     if Globals.Build.isDebug:
         today = datetime.today().strftime("%d/%m/%Y")
         now = datetime.now().strftime("%H:%M:%S:%f")
-        print(today, now, message)
+        print(Globals.LogTags.TAG_DEBUG, today, now, message)
+
+def logI(message: str) -> None:
+    """
+    Print a log message, with current date and time info.
+
+    :param message: The message to be printed
+    """
+
+    today = datetime.today().strftime("%d/%m/%Y")
+    now = datetime.now().strftime("%H:%M:%S:%f")
+    print(Globals.LogTags.TAG_INFO, today, now, message)
 
 
 def logBuildInfo() -> None:
@@ -26,8 +37,8 @@ def logBuildInfo() -> None:
 
     """
 
-    logD(Globals.Build.appTitle)
-    logD('Script running in debug mode : ' + str(Globals.Build.isDebug))
-    logD('Script version : ' + Globals.Build.versionString)
-    logD('Detected OS : ' + SystemUtils.getOsInfo())
-    logD('OS Build Number : ' + str(SystemUtils.getOsBuildNumber()))
+    logI(Globals.Build.appTitle)
+    logI('Script running in debug mode : ' + str(Globals.Build.isDebug))
+    logI('Script version : ' + Globals.Build.versionString)
+    logI('Detected OS : ' + SystemUtils.getOsInfo())
+    logI('OS Build Number : ' + str(SystemUtils.getOsBuildNumber()))
