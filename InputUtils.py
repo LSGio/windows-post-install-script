@@ -16,3 +16,4 @@ def stringToBoolean(input: str) -> object:
         return False
     else:
         return None
+        

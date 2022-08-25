@@ -1,6 +1,6 @@
 # windows-post-install-script
 
-## What is it
+## Introduction
 
 This script aims to help at disabling all the annoying and/or unused features of windows 10/11
 
@@ -24,3 +24,4 @@ Windows 10:
 Windows 11:
 
 Not tested yet
+

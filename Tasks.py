@@ -3,8 +3,15 @@ import Globals
 import RegUtils
 
 
+"""
+All functions in this file can be called directly from main.py to produce your own custom script
+For now, all the functions simply change registry values to achieve their goal,
+and all functions return either True or False based on their success.
+"""
+
+
 @runnableTask
-def hideCortanaButton(**kwargs: dict) -> bool:
+def hideCortanaButton(hide: bool = True) -> bool:
     """
     Hide Cortana button in taskbar.
     [True] to hide, False to show.
@@ -14,12 +21,12 @@ def hideCortanaButton(**kwargs: dict) -> bool:
     key_path = Globals.RegKeys.KEY_SHOW_CORTANA_BUTTON
     value_name = Globals.RegValueNames.VALUENAME_SHOW_CORTANA_BUTTON
     key_type = RegUtils.Consts.REG_DWORD
-    new_value = 0 if kwargs['userInput'] else 1
+    new_value = 0 if hide else 1
     return RegUtils.addOrUpdateRegValue(root_path, key_path, value_name, key_type, new_value)
 
 
 @runnableTask
-def hideTaskViewButton(**kwargs: dict) -> bool:
+def hideTaskViewButton(hide: bool = True) -> bool:
     """
     Hide Task View button in taskbar.
     [True] to hide, False to show.
@@ -34,7 +41,7 @@ def hideTaskViewButton(**kwargs: dict) -> bool:
 
 
 @runnableTask
-def hideSearchBar(**kwargs: dict) -> bool:
+def hideSearchBar(hide: bool = True) -> bool:
     """
     Hide Search from taskbar.
     [True] to hide, False to show.
@@ -49,7 +56,7 @@ def hideSearchBar(**kwargs: dict) -> bool:
 
 
 @runnableTask
-def hideNewsAndInterests(**kwargs: dict) -> bool:
+def hideNewsAndInterests(hide: bool = True) -> bool:
     """
     Hide News and interests button in taskbar.
     [True] to hide, False to show.
@@ -64,7 +71,7 @@ def hideNewsAndInterests(**kwargs: dict) -> bool:
 
 
 @runnableTask
-def showExtensionsForKnownFiletypes(**kwargs: dict) -> bool:
+def showExtensionsForKnownFiletypes(show: bool = True) -> bool:
     """
     Show file extensions for known filetypes.
     [True] to show, False to hide.
@@ -79,7 +86,7 @@ def showExtensionsForKnownFiletypes(**kwargs: dict) -> bool:
 
 
 @runnableTask
-def openThisPcInsteadOfQuickAccess(**kwargs: dict) -> bool:
+def openThisPcInsteadOfQuickAccess(hide: bool = True) -> bool:
     """
     Open This PC instead of Quick access when opening a new explorer window.
     [True] to open This PC, False to open Quick access.
@@ -94,7 +101,7 @@ def openThisPcInsteadOfQuickAccess(**kwargs: dict) -> bool:
 
 
 @runnableTask
-def hideRecentFilesInExplorer(**kwargs: dict) -> bool:
+def hideRecentFilesInExplorer(hide: bool = True) -> bool:
     """
     Hide recently used files in Quick access.
     [True] to hide, False to show.
@@ -109,7 +116,7 @@ def hideRecentFilesInExplorer(**kwargs: dict) -> bool:
 
 
 @runnableTask
-def hideFrequentFilesInExplorer(**kwargs: dict) -> bool:
+def hideFrequentFilesInExplorer(hide: bool = True) -> bool:
     """
     Hide frequently used folders in Quick access.
     [True] to hide, False to show.
@@ -124,7 +131,7 @@ def hideFrequentFilesInExplorer(**kwargs: dict) -> bool:
 
 
 @runnableTask
-def toggleDeliveryOptimization(**kwargs: dict) -> bool:
+def toggleDeliveryOptimization(hide: bool = True) -> bool:
     """
     Enable or disable Delivery Optimization service.
     True to enable, [False] to disable.
@@ -139,7 +146,7 @@ def toggleDeliveryOptimization(**kwargs: dict) -> bool:
 
 
 @runnableTask
-def showThisPcDesktopIcon(**kwargs: dict) -> bool:
+def showThisPcDesktopIcon(hide: bool = True) -> bool:
     """
     Show or hide This PC desktop icon.
     [True] to show, False to hide.
@@ -154,7 +161,7 @@ def showThisPcDesktopIcon(**kwargs: dict) -> bool:
 
 
 @runnableTask
-def showControlPanelDesktopIcon(**kwargs: dict) -> bool:
+def showControlPanelDesktopIcon(hide: bool = True) -> bool:
     """
     Show or hide Control Panel desktop icon.
     [True] to show, False to hide.
@@ -169,7 +176,7 @@ def showControlPanelDesktopIcon(**kwargs: dict) -> bool:
 
 
 @runnableTask
-def showRecycleBinDesktopIcon(**kwargs: dict) -> bool:
+def showRecycleBinDesktopIcon(hide: bool = True) -> bool:
     """
     Show or hide Recycle Bin desktop icon.
     [True] to show, False to hide.
@@ -184,7 +191,7 @@ def showRecycleBinDesktopIcon(**kwargs: dict) -> bool:
 
 
 @runnableTask
-def showNetworkDesktopIcon(**kwargs: dict) -> bool:
+def showNetworkDesktopIcon(hide: bool = True) -> bool:
     """
     Show or hide Network desktop icon.
     [True] to show, False to hide.
@@ -199,7 +206,7 @@ def showNetworkDesktopIcon(**kwargs: dict) -> bool:
 
 
 @runnableTask
-def showUserFolderDesktopIcon(**kwargs: dict) -> bool:
+def showUserFolderDesktopIcon(hide: bool = True) -> bool:
     """
     Show or hide User folder desktop icon.
     [True] to show, False to hide.
@@ -214,7 +221,7 @@ def showUserFolderDesktopIcon(**kwargs: dict) -> bool:
 
 
 @runnableTask
-def disableGameMode(**kwargs: dict) -> bool:
+def disableGameMode(hide: bool = True) -> bool:
     """
     Enable or disable Game Mode that was introduced in build 1703 of Windows 10.
     [True] to disable, False to enable.
@@ -232,7 +239,7 @@ def disableGameMode(**kwargs: dict) -> bool:
 
 
 @runnableTask
-def disableStickyKeys(**kwargs: dict) -> bool:
+def disableStickyKeys(hide: bool = True) -> bool:
     """
     Enable or disable Sticky Keys
     Note: when enabled, user still must use the keyboard shortcut to activate the feature.

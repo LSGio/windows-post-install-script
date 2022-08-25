@@ -4,8 +4,9 @@ class Build:
 
     appTitle = "Windows post install script"
     isDebug = True
-    versionNumber = 106
-    versionString = "1.0.6"
+    versionNumber = 107
+    versionString = "1.0.7"
+    configFile = "config.ini"
 
 class LogTags:
 
@@ -78,8 +79,3 @@ class RegValueNames:
     VALUENAME_TOGGLE_GAME_MODE_1 = 'AllowAutoGameMode'
     VALUENAME_TOGGLE_GAME_MODE_2 = 'AutoGameModeEnabled'
     VALUENAME_TOGGLE_STICKY_KEYS = 'Flags'
-
-
-class InputPrompts:
-
-    PROMPT_INPUT = "Your input : "
