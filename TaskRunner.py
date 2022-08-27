@@ -1,6 +1,6 @@
 import Globals
 import Logger
-import InputUtils
+import InteractionUtils
 
 
 def runnableTask(task):

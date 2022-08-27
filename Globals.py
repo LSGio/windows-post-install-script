@@ -8,10 +8,25 @@ class Build:
     versionString = "1.0.7"
     configFile = "config.ini"
 
+
+class Config:
+
+    config = None
+
 class LogTags:
 
     TAG_DEBUG = " DEBUG "
     TAG_INFO = " INFO "
+
+
+class UserPrompts:
+
+    PROMPT_EULA_CHECK = "Checking EULA status..."
+    PROMPT_EULA_ACCEPTED = "Usage terms accepted, proceeding..."
+    PROMPT_EULA_NOT_ACCEPTED = "The script cannot proceed until you agree to the usage terms in config.ini..."
+    PROMPT_MASTER_SWITCH_CHECK = "Checking Master-Switch..."
+    PROMPT_MASTER_SWITCH_ENABLED = "The script does nothing by default until you disable the Master-Switch in config.ini"
+    PROMPT_MASTER_SWITCH_DISABLED = "Master-Switch is disabled, proceeding"
 
 
 class WindowsBuilds:
