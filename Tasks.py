@@ -86,7 +86,7 @@ def showExtensionsForKnownFiletypes(show: bool = True) -> bool:
 
 
 @runnableTask
-def openThisPcInsteadOfQuickAccess(hide: bool = True) -> bool:
+def openThisPcInsteadOfQuickAccess(toggle: bool = True) -> bool:
     """
     Open This PC instead of Quick access when opening a new explorer window.
     [True] to open This PC, False to open Quick access.
@@ -131,7 +131,7 @@ def hideFrequentFilesInExplorer(hide: bool = True) -> bool:
 
 
 @runnableTask
-def toggleDeliveryOptimization(hide: bool = True) -> bool:
+def toggleDeliveryOptimization(toggle: bool = True) -> bool:
     """
     Enable or disable Delivery Optimization service.
     True to enable, [False] to disable.
@@ -146,7 +146,7 @@ def toggleDeliveryOptimization(hide: bool = True) -> bool:
 
 
 @runnableTask
-def showThisPcDesktopIcon(hide: bool = True) -> bool:
+def showThisPcDesktopIcon(show: bool = True) -> bool:
     """
     Show or hide This PC desktop icon.
     [True] to show, False to hide.
@@ -161,7 +161,7 @@ def showThisPcDesktopIcon(hide: bool = True) -> bool:
 
 
 @runnableTask
-def showControlPanelDesktopIcon(hide: bool = True) -> bool:
+def showControlPanelDesktopIcon(show: bool = True) -> bool:
     """
     Show or hide Control Panel desktop icon.
     [True] to show, False to hide.
@@ -176,7 +176,7 @@ def showControlPanelDesktopIcon(hide: bool = True) -> bool:
 
 
 @runnableTask
-def showRecycleBinDesktopIcon(hide: bool = True) -> bool:
+def showRecycleBinDesktopIcon(show: bool = True) -> bool:
     """
     Show or hide Recycle Bin desktop icon.
     [True] to show, False to hide.
@@ -191,7 +191,7 @@ def showRecycleBinDesktopIcon(hide: bool = True) -> bool:
 
 
 @runnableTask
-def showNetworkDesktopIcon(hide: bool = True) -> bool:
+def showNetworkDesktopIcon(show: bool = True) -> bool:
     """
     Show or hide Network desktop icon.
     [True] to show, False to hide.
@@ -206,7 +206,7 @@ def showNetworkDesktopIcon(hide: bool = True) -> bool:
 
 
 @runnableTask
-def showUserFolderDesktopIcon(hide: bool = True) -> bool:
+def showUserFolderDesktopIcon(show: bool = True) -> bool:
     """
     Show or hide User folder desktop icon.
     [True] to show, False to hide.
@@ -221,7 +221,7 @@ def showUserFolderDesktopIcon(hide: bool = True) -> bool:
 
 
 @runnableTask
-def disableGameMode(hide: bool = True) -> bool:
+def disableGameMode(disable: bool = True) -> bool:
     """
     Enable or disable Game Mode that was introduced in build 1703 of Windows 10.
     [True] to disable, False to enable.
@@ -239,7 +239,7 @@ def disableGameMode(hide: bool = True) -> bool:
 
 
 @runnableTask
-def disableStickyKeys(hide: bool = True) -> bool:
+def disableStickyKeys(disable: bool = True) -> bool:
     """
     Enable or disable Sticky Keys
     Note: when enabled, user still must use the keyboard shortcut to activate the feature.

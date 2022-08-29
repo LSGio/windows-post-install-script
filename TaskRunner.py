@@ -1,6 +1,6 @@
+import ConfigProvider
 import Globals
 import Logger
-import InteractionUtils
 
 
 def runnableTask(task):
@@ -16,11 +16,12 @@ def runnableTask(task):
     return:
     The wrapped function object
     """
-    def wrappedTask(*args, **kwargs):
+    def wrappedTask():
 
-        task_name = task.__name__
-        Logger.logD('Executing task : ' + task_name)
-        task(*args, **kwargs)
-        Logger.logD('Finished task : ' + task_name)
+        taskName = task.__name__
+        args = ConfigProvider.getBoolean(Globals.Config.SECTION_TASKS, taskName)
+        Logger.logD('Executing task : ' + taskName)
+        task(args)
+        Logger.logD('Finished task : ' + taskName)
 
     return wrappedTask

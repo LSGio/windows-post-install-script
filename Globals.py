@@ -4,14 +4,22 @@ class Build:
 
     appTitle = "Windows post install script"
     isDebug = True
-    versionNumber = 107
-    versionString = "1.0.7"
-    configFile = "config.ini"
+    versionNumber = 108
+    versionString = "1.0.8"
 
 
 class Config:
 
     config = None
+    configFilename = "config.ini"
+
+    SECTION_EULA = 'Usage-Terms'
+    SECTION_SAFE_MODE = 'Safe-Mode'
+    SECTION_TASKS = 'Tasks'
+
+    KEY_ACCEPT_EULA = 'acceptUsageTerms'
+    KEY_SAFE_MODE = 'runInSafeMode'
+
 
 class LogTags:
 
@@ -22,11 +30,13 @@ class LogTags:
 class UserPrompts:
 
     PROMPT_EULA_CHECK = "Checking EULA status..."
+    PROMPT_SAFE_MODE_CHECK = "Checking Safe-Mode..."
+
     PROMPT_EULA_ACCEPTED = "Usage terms accepted, proceeding..."
     PROMPT_EULA_NOT_ACCEPTED = "The script cannot proceed until you agree to the usage terms in config.ini..."
-    PROMPT_MASTER_SWITCH_CHECK = "Checking Master-Switch..."
-    PROMPT_MASTER_SWITCH_ENABLED = "The script does nothing by default until you disable the Master-Switch in config.ini"
-    PROMPT_MASTER_SWITCH_DISABLED = "Master-Switch is disabled, proceeding"
+
+    PROMPT_SAFETY_SWITCH_ENABLED = "The script does nothing by default until you disable Safe-Mode in config.ini"
+    PROMPT_SAFETY_SWITCH_DISABLED = "Safe-Mode is disabled, proceeding..."
 
 
 class WindowsBuilds:

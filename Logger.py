@@ -1,16 +1,25 @@
 
-
 from datetime import datetime
-
 import Globals
 import SystemUtils
 
 
+def logDisclaimer() -> None:
+    """
+    Print the readme file
+    """
+
+    with open('README.md') as readmeFile:
+        rawReadme = readmeFile.read()
+        print(rawReadme)
+
+
 def logD(message: str) -> None:
     """
-    Print a log message, with current date and time info.
+    Print a log message on Debug build-types, with current date and time info.
 
-    :param message: The message to be printed
+    Parameters:
+    str message : The message to be printed
     """
 
     if Globals.Build.isDebug:
@@ -18,11 +27,13 @@ def logD(message: str) -> None:
         now = datetime.now().strftime("%H:%M:%S:%f")
         print(Globals.LogTags.TAG_DEBUG, today, now, message)
 
+
 def logI(message: str) -> None:
     """
-    Print a log message, with current date and time info.
+    Print a log message on every Build-type, with current date and time info.
 
-    :param message: The message to be printed
+    Parameters:
+    str message : The message to be printed
     """
 
     today = datetime.today().strftime("%d/%m/%Y")
@@ -33,8 +44,6 @@ def logI(message: str) -> None:
 def logBuildInfo() -> None:
     """
     Print system and script info.
-    mainly used for log purposes
-
     """
 
     logI(Globals.Build.appTitle)
