@@ -24,7 +24,7 @@ def logD(message: str) -> None:
 
     if Globals.Build.isDebug:
         today = datetime.today().strftime("%d/%m/%Y")
-        now = datetime.now().strftime("%H:%M:%S:%f")
+        now = datetime.now().strftime("%H:%M")
         print(Globals.LogTags.TAG_DEBUG, today, now, message)
 
 
@@ -37,7 +37,7 @@ def logI(message: str) -> None:
     """
 
     today = datetime.today().strftime("%d/%m/%Y")
-    now = datetime.now().strftime("%H:%M:%S:%f")
+    now = datetime.now().strftime("%H:%M")
     print(Globals.LogTags.TAG_INFO, today, now, message)
 
 
@@ -47,7 +47,7 @@ def logBuildInfo() -> None:
     """
 
     logI(Globals.Build.appTitle)
-    logI('Script running in debug mode : ' + str(Globals.Build.isDebug))
-    logI('Script version : ' + Globals.Build.versionString)
-    logI('Detected OS : ' + SystemUtils.getOsInfo())
-    logI('OS Build Number : ' + str(SystemUtils.getOsBuildNumber()))
+    logI(f'Script running in debug mode : {Globals.Build.isDebug}')
+    logI(f'Script version : {Globals.Build.versionString}')
+    logI(f'Detected OS : {SystemUtils.getOsInfo()}')
+    logI(f'OS Build Number : {SystemUtils.getOsBuildNumber()}')

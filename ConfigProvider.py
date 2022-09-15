@@ -12,5 +12,3 @@ def maybeReadConfigFile(filename) -> None:
 def getBoolean(section: str, key: str) -> bool:
     maybeReadConfigFile(Globals.Config.configFilename)
     return Globals.Config.config.getboolean(section, key)
-
-
