@@ -1,28 +1,29 @@
 import InteractionUtils
 import Logger
-from Tasks import *
+import Tasks
 
 
 if __name__ == '__main__':
 
+    Logger.initLogger()
     Logger.logDisclaimer()
     Logger.logBuildInfo()
     InteractionUtils.checkEulaStatus()
     InteractionUtils.checkSafetySwitchStatus()
 
-    hideCortanaButton()
-    hideTaskViewButton()
-    hideSearchBar()
-    hideNewsAndInterests()
-    showExtensionsForKnownFiletypes()
-    openThisPcInsteadOfQuickAccess()
-    hideRecentFilesInExplorer()
-    hideFrequentFilesInExplorer()
-    toggleDeliveryOptimization()
-    showThisPcDesktopIcon()
-    showControlPanelDesktopIcon()
-    showRecycleBinDesktopIcon()
-    showNetworkDesktopIcon()
-    showUserFolderDesktopIcon()
-    disableGameMode()
-    disableStickyKeys()
+    # Tasks.hideCortanaButton()
+    # Tasks.hideTaskViewButton()
+    # Tasks.hideSearchBar()
+    # Tasks.hideNewsAndInterests()
+    # Tasks.showExtensionsForKnownFiletypes()
+    # Tasks.openThisPcInsteadOfQuickAccess()
+    # Tasks.hideRecentFilesInExplorer()
+    # Tasks.hideFrequentFilesInExplorer()
+    # Tasks.toggleDeliveryOptimization()
+    # Tasks.showThisPcDesktopIcon()
+    # Tasks.showControlPanelDesktopIcon()
+    # Tasks.showRecycleBinDesktopIcon()
+    # Tasks.showNetworkDesktopIcon()
+    # Tasks.showUserFolderDesktopIcon()
+    # Tasks.disableGameMode()
+    # Tasks.disableStickyKeys()

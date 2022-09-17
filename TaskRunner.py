@@ -23,9 +23,9 @@ def runnableTask(task):
         taskName = task.__name__
         args = ConfigProvider.getBoolean(Globals.Config.SECTION_TASKS, taskName)
         Logger.logD('Executing task : ' + taskName)
-        start = time.perf_counter()
+        startTime = time.perf_counter()
         task(args)
-        end = time.perf_counter();
-        Logger.logD(f'Task : {taskName} finished, took {end - start} seconds')
+        taskTime = time.perf_counter() - startTime
+        Logger.logD(f'Task : {taskName} finished, took {taskTime:.4f} seconds')
 
     return wrappedTask

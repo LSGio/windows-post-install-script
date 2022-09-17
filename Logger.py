@@ -1,7 +1,17 @@
 
-from datetime import datetime
+import logging
 import Globals
 import SystemUtils
+
+
+def initLogger() -> None:
+    """
+    Initialize the root logger
+    """
+    logFormat = '%(asctime)s :: %(levelname)s :: %(message)s'
+    dateFormat = '%d/%m/%Y %H:%M:%S'
+    logLevel = logging.DEBUG if Globals.Build.isDebug else logging.INFO
+    logging.basicConfig(format=logFormat, level=logLevel, datefmt=dateFormat)
 
 
 def logDisclaimer() -> None:
@@ -22,10 +32,7 @@ def logD(message: str) -> None:
     str message : The message to be printed
     """
 
-    if Globals.Build.isDebug:
-        today = datetime.today().strftime("%d/%m/%Y")
-        now = datetime.now().strftime("%H:%M")
-        print(Globals.LogTags.TAG_DEBUG, today, now, message)
+    logging.debug(message)
 
 
 def logI(message: str) -> None:
@@ -36,9 +43,7 @@ def logI(message: str) -> None:
     str message : The message to be printed
     """
 
-    today = datetime.today().strftime("%d/%m/%Y")
-    now = datetime.now().strftime("%H:%M")
-    print(Globals.LogTags.TAG_INFO, today, now, message)
+    logging.info(message)
 
 
 def logBuildInfo() -> None:

@@ -4,8 +4,8 @@ class Build:
 
     appTitle = "Windows post install script"
     isDebug = True
-    versionNumber = 108
-    versionString = "1.0.8"
+    versionNumber = 110
+    versionString = "1.1.0"
 
 
 class Config:
@@ -19,12 +19,6 @@ class Config:
 
     KEY_ACCEPT_EULA = 'acceptUsageTerms'
     KEY_SAFE_MODE = 'runInSafeMode'
-
-
-class LogTags:
-
-    TAG_DEBUG = " DEBUG "
-    TAG_INFO = " INFO "
 
 
 class UserPrompts:
