@@ -30,7 +30,7 @@ def addOrUpdateRegValue(rootPath: int, keyPath: str, valueName: str, valueType: 
                 winreg.SetValueEx(sub_key, valueName, 0, valueType, newValue)
                 return True
     except (OSError, WindowsError) as e:
-        Logger.logD(e)
+        Logger.logE(e)
         return False
 
 
@@ -56,7 +56,7 @@ def deleteRegValue(rootPath: int, keyPath: str, valueName: str) -> bool:
                 winreg.DeleteValue(sub_key, valueName)
                 return True
     except (OSError, WindowsError) as e:
-        Logger.logD(e)
+        Logger.logE(e)
         return False
 
 
@@ -81,5 +81,5 @@ def getValueOfRegKey(rootPath: int, keyPath: str, valueName: str) -> str:
             with winreg.CreateKeyEx(root_key, keyPath, 0, winreg.KEY_READ) as sub_key:
                 return winreg.QueryValueEx(sub_key, valueName)[0]
     except (OSError, WindowsError) as e:
-        Logger.logD(e)
+        Logger.logE(e)
         return ""

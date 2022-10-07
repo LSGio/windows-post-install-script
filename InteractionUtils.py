@@ -3,7 +3,7 @@ import Logger
 import Globals
 
 
-def checkEulaStatus() -> None:
+def exitIfEulaDeclined() -> None:
     Logger.logD(Globals.UserPrompts.PROMPT_EULA_CHECK)
     eulaValue = ConfigProvider.getBoolean(Globals.Config.SECTION_EULA, Globals.Config.KEY_ACCEPT_EULA)
     if eulaValue:
@@ -14,7 +14,7 @@ def checkEulaStatus() -> None:
         exit(0)
 
 
-def checkSafetySwitchStatus() -> None:
+def exitIfSafetySwitchIsOn() -> None:
     Logger.logD(Globals.UserPrompts.PROMPT_SAFE_MODE_CHECK)
     safeModeValue = ConfigProvider.getBoolean(Globals.Config.SECTION_SAFE_MODE, Globals.Config.KEY_SAFE_MODE)
     if not safeModeValue:

@@ -1,5 +1,7 @@
 
 import logging
+import sys
+
 import Globals
 import SystemUtils
 
@@ -8,10 +10,10 @@ def initLogger() -> None:
     """
     Initialize the root logger
     """
-    logFormat = '%(asctime)s :: %(levelname)s :: %(message)s'
+    logFormat = '%(asctime)s %(levelname)s : %(message)s'
     dateFormat = '%d/%m/%Y %H:%M:%S'
     logLevel = logging.DEBUG if Globals.Build.isDebug else logging.INFO
-    logging.basicConfig(format=logFormat, level=logLevel, datefmt=dateFormat)
+    logging.basicConfig(format=logFormat, level=logLevel, datefmt=dateFormat, stream=sys.stdout)
 
 
 def logDisclaimer() -> None:
@@ -21,12 +23,12 @@ def logDisclaimer() -> None:
 
     with open('README.md') as readmeFile:
         rawReadme = readmeFile.read()
-        print(rawReadme)
+        logI(rawReadme)
 
 
 def logD(message: str) -> None:
     """
-    Print a log message on Debug build-types, with current date and time info.
+    Print a debug log message on Debug build-types, with current date and time info.
 
     Parameters:
     str message : The message to be printed
@@ -37,13 +39,24 @@ def logD(message: str) -> None:
 
 def logI(message: str) -> None:
     """
-    Print a log message on every Build-type, with current date and time info.
+    Print an info log message on every Build-type, with current date and time info.
 
     Parameters:
     str message : The message to be printed
     """
 
     logging.info(message)
+
+
+def logE(message: str) -> None:
+    """
+    Print an error log message on every Build-type, with current date and time info.
+
+    Parameters:
+    str message : The message to be printed
+    """
+
+    logging.error(message)
 
 
 def logBuildInfo() -> None:
