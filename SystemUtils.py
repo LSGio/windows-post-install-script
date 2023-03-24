@@ -1,5 +1,6 @@
 import ctypes
 import sys
+
 import Globals
 import Logger
 import RegUtils
@@ -13,6 +14,7 @@ def requestElevatedPermissions() -> None:
     if not isRunningAsAdmin():
         # TODO : rewrite with process and return codes
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+        sys.exit()
     else:
         Logger.logD('Already running as admin.')
 
@@ -103,10 +105,9 @@ def getOsInfo() -> str:
             productName = 'Windows 11'
         elif buildNumber >= Globals.WindowsBuilds.WINDOWS_10_INITIAL_BUILD_NUMBER:
             productName = 'Windows 10'
-
+    elif 'Windows 8' in productName:
+        if buildNumber >= Globals.WindowsBuilds.WINDOWS_8_1_INITIAL_BUILD_NUMBER:
+            productName = 'Windows 8.1'
+        elif buildNumber >= Globals.WindowsBuilds.WINDOWS_8_INITIAL_BUILD_NUMBER:
+            productName = 'Windows 8'
     return productName + ' ' + editionID
-
-
-def notifyRegistryChanged() -> None:
-    # TODO : implement
-    pass

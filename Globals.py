@@ -7,21 +7,8 @@ class Build:
     versionNumber = 110
     versionString = "1.1.0"
 
-
-class Config:
-
-    config = None
-    configFilename = "config.ini"
-
-    SECTION_EULA = 'Usage-Terms'
-    SECTION_SAFE_MODE = 'Safe-Mode'
-    SECTION_TASKS = 'Tasks'
-
-    KEY_ACCEPT_EULA = 'acceptUsageTerms'
-    KEY_SAFE_MODE = 'runInSafeMode'
-
-
 class UserPrompts:
+    PROMPT_PRESS_ANY_KEY = "Press any key to proceed..."
 
     PROMPT_EULA_CHECK = "Checking EULA status..."
     PROMPT_SAFE_MODE_CHECK = "Checking Safe-Mode..."
@@ -32,11 +19,15 @@ class UserPrompts:
     PROMPT_SAFETY_SWITCH_ENABLED = "The script does nothing by default until you disable Safe-Mode in config.ini"
     PROMPT_SAFETY_SWITCH_DISABLED = "Safe-Mode is disabled, proceeding..."
 
+    PROMPT_CONFIG_BEFORE_APPLYING = "The following configuration will be applied...."
+
 
 class WindowsBuilds:
-
     WINDOWS_11_INITAL_BUILD_NUMBER = 22000
     WINDOWS_10_INITIAL_BUILD_NUMBER = 10240
+    WINDOWS_8_1_INITIAL_BUILD_NUMBER = 9600
+    WINDOWS_8_INITIAL_BUILD_NUMBER = 9200
+    WINDOWS_7_INITIAL_BUILD_NUMBER = 7600  # not used yet
 
 
 class RegKeys:

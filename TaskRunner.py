@@ -1,11 +1,10 @@
 import time
 
-import ConfigProvider
-import Globals
 import Logger
+from ConfigProvider import ConfigProvider
 
 
-def runnableTask(task):
+def runnableTask(task: callable) -> callable:
     """
     Wrapper function , wraps a task and prints additional logging information.
 
@@ -18,14 +17,14 @@ def runnableTask(task):
     return:
     The wrapped function object
     """
-    def wrappedTask():
 
-        taskName = task.__name__
-        args = ConfigProvider.getBoolean(Globals.Config.SECTION_TASKS, taskName)
-        Logger.logD('Executing task : ' + taskName)
+    def wrappedTask() -> None:
+        currentTaskName = task.__name__
+        args = ConfigProvider.getBoolean(ConfigProvider.SECTION_TASKS, currentTaskName)
+        Logger.logD('Executing task : ' + currentTaskName)
         startTime = time.perf_counter()
         task(args)
         taskTime = time.perf_counter() - startTime
-        Logger.logD(f'Task : {taskName} finished, took {taskTime:.4f} seconds')
+        Logger.logD(f'Task : {currentTaskName} finished, took {taskTime:.4f} seconds')
 
     return wrappedTask

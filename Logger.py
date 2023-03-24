@@ -10,6 +10,7 @@ def initLogger() -> None:
     """
     Initialize the root logger
     """
+
     logFormat = '%(asctime)s %(levelname)s : %(message)s'
     dateFormat = '%d/%m/%Y %H:%M:%S'
     logLevel = logging.DEBUG if Globals.Build.isDebug else logging.INFO

@@ -2,8 +2,6 @@ import winreg
 
 import Logger
 
-Consts = winreg
-
 
 def addOrUpdateRegValue(rootPath: int, keyPath: str, valueName: str, valueType: int, newValue: str | int) -> bool:
     """
